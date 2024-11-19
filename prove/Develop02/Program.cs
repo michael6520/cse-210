@@ -1,11 +1,6 @@
 // I used a csv file instead of separating things with ~ for the full 100% thing
 
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Net.WebSockets;
-using Microsoft.VisualBasic;
 
 class Program {
     static void Main(string[] args) {
