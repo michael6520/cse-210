@@ -1,3 +1,5 @@
+// I used a csv file instead of separating things with ~ for the full 100% thing
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
