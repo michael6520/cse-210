@@ -9,6 +9,10 @@ abstract class Goal()
     public abstract int CompleteGoal();
 
     public abstract void DisplayGoal(int i);
+
+    public abstract string Save();
+
+    public abstract void Load(string content, int points, bool completed, int length = 0, int checklistPoints = 0, int amountCompleted = 0);
 }
 
 class SimpleGoal : Goal
@@ -39,6 +43,18 @@ class SimpleGoal : Goal
             Console.WriteLine($"{i}. [ ] {_content}\n");
         }
     }
+
+    public override string Save()
+    {
+        return $"SimpleGoal,\"{_content}\",\"{_points}\",\"{_completed}\"";
+    }
+
+    public override void Load(string content, int points, bool completed, int length = 0, int checklistPoints = 0, int amountCompleted = 0)
+    {
+        _content = content;
+        _points = points;
+        _completed = completed;
+    }
 }
 
 class EternalGoal : Goal
@@ -60,6 +76,18 @@ class EternalGoal : Goal
     public override void DisplayGoal(int i)
     {
         Console.WriteLine($"{i}. {_content}\n");
+    }
+
+    public override string Save()
+    {
+        return $"EternalGoal,\"{_content}\",\"{_points}\",\"{_completed}\"";
+    }
+
+    public override void Load(string content, int points, bool completed, int length = 0, int checklistPoints = 0, int amountCompleted = 0)
+    {
+        _content = content;
+        _points = points;
+        _completed = completed;
     }
 }
 
@@ -98,5 +126,20 @@ class ChecklistGoal : Goal
     public override void DisplayGoal(int i)
     {
         Console.WriteLine($"{i}. [{_amountCompleted}/{_length}] {_content}\n");
+    }
+
+    public override string Save()
+    {
+        return $"ChecklistGoal,\"{_content}\",\"{_points}\",\"{_completed}\",\"{_length}\",\"{_checklistPoints}\",\"{_amountCompleted}\"";
+    }
+
+    public override void Load(string content, int points, bool completed, int length, int checklistPoints, int amountCompleted)
+    {
+        _content = content;
+        _points = points;
+        _completed = completed;
+        _length = length;
+        _checklistPoints = checklistPoints;
+        _amountCompleted = amountCompleted;
     }
 }
